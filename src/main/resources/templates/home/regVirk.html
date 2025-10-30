@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danmark Mod Madspild</title>
+
+    <link rel="stylesheet" href="homestyle.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        .flex-center {
+            display: flex;
+            justify-content: center; /* horizontal center */
+            align-items: center;     /* vertical center */
+            margin: auto 0;
+            max-width: 2400px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.45); /* black, 50% opacity */
+            border-radius: 10px; /* optional, looks nicer */
+            padding: 1.5rem;     /* some space inside */
+        }
+        hr {
+            margin: 1.5rem 0; /* top & bottom spacing */
+            border: none;     /* remove default border style */
+            border-top: 2px solid #ccc; /* optional: custom line style */
+        }
+        body{
+            background-image: url('/pexels-snapwire-730897_journey_grass.jpg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920');
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<!-- Overliggende menu -->
+<header class="site-header">
+    <nav class="nav" aria-label="Primary">
+
+        <!-- unordered list / bullet list starter -->
+        <ul class="nav-list" role="menubar" aria-label="Main">
+
+            <!-- Fly-out: Om Danmark mod madspild -->
+            <li class="nav-item" role="none">
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#">Om Danmark mod madspild ▾</a>
+                <div class="flyout flyout--text" role="dialog" aria-label="Om Danmark mod madspild">
+                    <div class="panel">
+
+                        <!-- Tekst i fly-out feltet til: Om Danmark mod madspild -->
+                        <div class="flyout-content" role="document">
+
+                            <b th:text="${About.header}">Default header</b>
+                            <p th:text="${About.line_1}">Default line</p>
+                            <p th:text="${About.line_2}">Default line</p>
+                            <p th:text="${About.line_3}">Default line</p>
+                            <p th:text="${About.line_4}">Default line</p>
+                            <p th:text="${About.line_5}">Default line</p>
+
+
+                            <!-- Knap under teksten i fly-out feltet -->
+                            <p style="margin-top:.8rem">
+                                <button class="start-btn"
+                                        onclick="window.location.href='/'">
+                                    Start rejsen mod mindre madspild
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+    <div class="flex-center">
+    <div class="container">
+
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+        <label for="psw-repeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+
+        <label for="cpn"><b>Company Name</b></label>
+        <input type="text" placeholder="Enter Company Name" name="cpn" id="cpn" required>
+
+        <hr>
+        <button type="submit" class="registerbtn">Register</button>
+
+    </div>
+    </div>
+
+
+
+    <div class="container signin">
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
+    </div>
+
+
+</body>
+</html>
