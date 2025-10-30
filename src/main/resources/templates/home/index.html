@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="da">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Index page til præsentation af organisation</title>
+
+    <!-- Link til Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link til CSS fil i static directory -->
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+
+<body>
+
+<!-- Overliggende menu -->
+<header class="site-header">
+    <nav class="nav" aria-label="Primary">
+
+        <!-- unordered list / bullet list starter -->
+        <ul class="nav-list" role="menubar" aria-label="Main">
+
+            <!-- Fly-out: Om Danmark mod madspild -->
+            <li class="nav-item" role="none">
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#">Om Danmark mod madspild ▾</a>
+                <div class="flyout flyout--text" role="dialog" aria-label="Om Danmark mod madspild">
+                    <div class="panel">
+
+                        <!-- Tekst i fly-out feltet til: Om Danmark mod madspild -->
+                        <div class="flyout-content" role="document">
+
+                            <b th:text="${About.header}">Default header</b>
+                            <p th:text="${About.line_1}">Default line</p>
+                            <p th:text="${About.line_2}">Default line</p>
+                            <p th:text="${About.line_3}">Default line</p>
+                            <p th:text="${About.line_4}">Default line</p>
+                            <p th:text="${About.line_5}">Default line</p>
+
+
+                            <!-- Knap under teksten i fly-out feltet -->
+                            <p style="margin-top:.8rem"><button class="start-btn">Start rejsen mod mindre madspild</button></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Drop-down: Log ind -->
+            <li class="nav-item" role="none">
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#">Log ind ▾</a>
+                <div class="flyout" role="dialog" aria-label="Log ind">
+                    <div class="panel">
+
+                        <!-- unordered list / bullet list i drop down -->
+                        <ul class="list" role="list">
+                            <li><a href="#">Privat</a></li>
+                            <li><a href="#">Virksomhed</a></li>
+                            <li><a href="#">Admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+<!-- Slogan text -->
+<main>
+    <h1 class="hero-text">Din mad har rejst for langt til ikke at ramme din tallerken</h1>
+</main>
+</body>
+</html>
