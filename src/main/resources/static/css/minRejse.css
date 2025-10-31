@@ -1,0 +1,246 @@
+/* ================================
+   Simpelt layout og farvetema
+   ================================ */
+body {
+    margin: 0;
+    font-family: Plus Jakarta Sans, Arial, sans-serif;
+    background-color: #016946; /* Mørk tyrkis */
+    color: #ffffff;            /* Hvid tekst */
+}
+
+/* Header øverst */
+header {
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Split layout: to kolonner */
+.split {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* venstre dobbelt så bred som højre */
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* Mobilvisning: kolonner stables */
+@media (max-width: 800px) {
+    .split {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================================
+   Artikler
+   ================================ */
+.articles h2 {
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 0.5rem;
+}
+
+.card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    overflow: hidden;
+    min-height: 220px;
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    border-radius: 0;
+    z-index: 0;
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+    line-height: 1.8;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+/* Grøn læse-knap nederst */
+.read-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #009e60;
+    border: 1.5px solid rgba(0, 0, 0, 0.7);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 0.45rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.read-btn:hover {
+    background-color: #00b36a;
+    transform: translateY(-1px);
+}
+
+.read-btn::before {
+    content: "📖";
+    font-size: 1rem;
+}
+
+/* ================================
+   Statistik sektion
+   ================================ */
+.stats h2 {
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 0.5rem;
+}
+
+/* Stat-box indeholder kortene */
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    background: none;
+    padding: 0;
+}
+
+/* Hvert statistik-kort */
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    border-radius: 9px;
+    padding: 1rem 1.2rem;
+    transition: all 0.3s ease-in-out;
+    min-height: 120px;
+}
+
+.stat-card:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+}
+
+/* Ikoner i statistik-kort */
+.stat-icon {
+    flex: 0 0 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+/* Tekst i statistik-kort */
+.stat-text {
+    flex: 1;
+    text-align: left;
+}
+
+.stat-text b {
+    font-size: 1.2rem;
+}
+
+.growth {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    color: #00ff88;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 0.3rem;
+}
+
+.icon--arrow {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    stroke: none;
+}
+
+/* ================================
+   Progress bar
+   ================================ */
+.progress {
+    margin-top: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.bar {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.fill {
+    background-color: #ffffff;
+    height: 100%;
+    width: 0;
+    transition: width 0.5s ease-in-out;
+}
+
+/* ================================
+   Tidligere pickups
+   ================================ */
+.previous-pickups {
+    margin-top: 2rem;
+}
+
+.previous-pickups h3 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.pickup-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.pickup-item {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+}
+
+/* ================================
+   Footer
+   ================================ */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
