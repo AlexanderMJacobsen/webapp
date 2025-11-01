@@ -1,7 +1,3 @@
-
-
-
-
 /* inkluder padding og border i calculation af elements højde og bredde */
 * {
     box-sizing: border-box;
@@ -165,7 +161,7 @@ body::before {
     transform: translateX(-50%) translateY(12px);
     opacity: 0;
     pointer-events: none;
-    background: rgba(1, 105, 70, 0.25);     /* greenish, transparent */
+    background: rgba(1, 105, 70, 0.25); /* greenish, transparent */
     backdrop-filter: blur(5px);
 
     visibility: hidden;
@@ -202,12 +198,12 @@ body::before {
     transition-delay: 0s;
 }
 
-/* slight delay before hiding */
+/* Dropdown/fly-out fader ud i stedet for bare at forsvingde */
 .nav-item:not(:hover) .flyout {
     transition-delay: 0.15s;
 }
 
-/* invisible gap for easier hover */
+/* En del af bridge løsning til at gøre dropout/flyout nemmere at aktivere/fange */
 .flyout::before {
     content: "";
     position: absolute;
@@ -217,28 +213,28 @@ body::before {
     height: 12px;
 }
 
-/* make nav-item a positioning context */
+/* En del af bridge løsning til at gøre dropout/flyout nemmere at aktivere/fange */
 .nav-item--bridge {
     position: relative;
 }
 
-/* 1) invisible bridge under the BUTTON itself */
+/* En del af bridge løsning til at gøre dropout/flyout nemmere at aktivere/fange */
 .nav-item--bridge .nav-link::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -14px;   /* how far below the button the bridge goes */
-    height: 14px;    /* thickness of the bridge */
+    bottom: -14px; /* how far below the button the bridge goes */
+    height: 14px; /* thickness of the bridge */
     background: transparent;
     pointer-events: auto;
 }
 
-/* 2) also keep the buffer on the flyout so the two areas meet */
+/* En del af bridge løsning til at gøre dropout/flyout nemmere at aktivere/fange */
 .nav-item--bridge .flyout::before {
     content: "";
     position: absolute;
-    top: -14px;      /* must match the button bridge bottom */
+    top: -14px;
     left: 0;
     right: 0;
     height: 14px;
@@ -246,15 +242,14 @@ body::before {
 }
 
 
-
 /* ramme og baggrund for fly-out */
 .panel {
     position: relative;
-    background: rgba(1, 105, 70, 0.35);  /* same green, but transparent */
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(1, 105, 70, 0.35); /* same green, but transparent */
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(5px);          /* extra blur inside */
+    backdrop-filter: blur(5px); /* extra blur inside */
 }
 
 
@@ -305,9 +300,6 @@ body::before {
     background: var(--hover-accent);
     color: var(--hover-text);
 }
-
-
-
 
 
 /* layer oven på baggrund til at have slogan tekst på */
@@ -390,7 +382,8 @@ body::before {
     }
 }
 
-/* Hvis screen er smallere end 1075, så bliver fly-outs ikke vist */
+/* Hvis screen er smallere end 1075, så bliver fly-outs ikke vist
+   Dette er en rest fra rode med at lave Responsive Design med fly-outs */
 @media (max-width: 1075px) {
 
     .flyout {
@@ -398,23 +391,24 @@ body::before {
     }
 }
 
-/* smooth scroll for anchor links */
+/* Smooth scroll effect når bruge links til hoppe til sektion 1 og sektion 2 */
 html {
     scroll-behavior: smooth;
 }
 
-/* height of your sticky header so we can offset scroll */
+/* Her angives højden af top menu som målt i Developer Tools
+   For at få præcis overgang fra front til sektion 1 til sektion 2 */
 :root {
     --header-h: 42px;
-    --info-card-bg: var(--accent-variant);      /* you said: adjustable */
-    --info-button-bg: #016946;    /* green button, adjustable */
-    --info-text: #0b3a2b;         /* dark readable text */
+    --info-card-bg: var(--accent-variant);
+    --info-button-bg: #016946;
+    --info-text: #0b3a2b;
 }
 
-/* shared layout for the sections under the hero */
+/* generelt layout af sektion 1 og 2 osv */
 .info-section {
-    min-height: 100vh;              /* each section = full screen */
-    background: #ffffff;            /* white background, as you wanted */
+    min-height: 100vh;
+    background: #ffffff;
     display: flex;
     align-items: center;
     padding: calc(var(--header-h) + 2rem) 5vw 3rem;
@@ -422,23 +416,24 @@ html {
     scroll-margin-top: calc(var(--header-h) + 10px);
 }
 
-/* inner wrapper, easy to adjust meeting point by changing the two fr values */
+/* assymmetrisk horisontal deling af skærm i sektion 1 og sektion 2 */
 .info-inner {
     width: min(1200px, 100%);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;  /* text a bit wider than images */
+    /* her justeres assymmetrien i horisontal deling af skærm i sektion 1 og sektion 2 */
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 2.5rem;
     align-items: stretch;
 }
 
-/* the card on the left */
+/* selve frame til tekst i sektion 1 og sektion 2 */
 .info-text-box {
     /*background: var(--info-card-bg);*/
     background: #ffffff;
 
     border-radius: 10px;
-    box-shadow: 0 8px 28px rgba(0,0,0,.08);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .08);
     padding: 2rem 2.4rem 2.8rem;
     color: var(--info-text);
     display: flex;
@@ -446,17 +441,19 @@ html {
     gap: 1rem;
 }
 
+/* style til <h2 på tekst i sektion 1 og sektion 2 */
 .info-text-box h2 {
     margin-bottom: .25rem;
 }
 
+/* style til <p på tekst i sektion 1 og sektion 2 */
 .info-text-box p {
     line-height: 1.6;
 }
 
-/* button at the bottom */
+/* knapperne under teksten på sektion 1 og sektion 2 */
 .info-button {
-    margin-top: auto;                  /* pushes button to bottom of card */
+    margin-top: auto;
     display: inline-block;
     background: var(--info-button-bg);
     color: #fff;
@@ -473,76 +470,82 @@ html {
     opacity: .95;
 }
 
-/* right side: two images on top of each other */
+/* selve frames til images i sektion 1 og 2 */
 .info-images {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
 }
 
-/* Base look shared by both image boxes */
+/* frame parametre til images i sektion 1 og 2 */
 .info-img {
     border-radius: 16px;
     flex: 1 1 0;
     min-height: 150px;
-    background-size: cover;       /* fills entire box */
-    background-position: center;  /* center the subject */
+    background-size: cover; /* fills entire box */
+    background-position: center; /* center the subject */
     background-repeat: no-repeat;
-    background-color: #ffffff;    /* optional fallback color */
+    background-color: #ffffff; /* optional fallback color */
 
-    /*background-color: var(--accent-variant);    !* optional fallback color *!*/
+    /*background-color: var(--accent-variant); */
 }
 
-/* Unique image for each box */
+/* image 2 på sektion 1 angives her i CSS for større kontrol med hvordan det fremstår */
+
 .img-problem-1 {
     background-image: url("pexels-babydov-7788190_rotten_fruit-removebg-preview.png");
     background-position: center;
-    background-size: contain;       /* show the full logo without cropping */
+    background-size: contain; /* show the full logo without cropping */
 }
+
+/* image 2 på sektion 1 angives her i CSS for større kontrol med hvordan det fremstår */
 
 .img-problem-2 {
     background-image: url("marek-studzinski-aoU2CWG_Vhc-unsplash_rotten.jpg");
-    transform: scaleY(-1);   /* flips horizontally */
-    background-position: 50% 50%;   /* adjust focus area if needed */
-    background-size: 100%;          /* zoom level – adjust freely */
+    /* image vendes */
+    transform: scaleY(-1);
+    background-position: 50% 50%;
+    background-size: 100%;
 }
 
 .info-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;     /* fills box without distortion */
+    object-fit: cover;
     display: block;
 }
 
+
+/* image 1 på sektion 2 angives her i CSS for større kontrol med hvordan det fremstår */
+
+.img-solution-1 {
+    background-image: url("pexels-rachel-claire-5865147_community_eating.jpg");
+    background-position: 50% 50%;
+    background-size: 100%;
+}
+
+/* image 2 på sektion 2 angives her i CSS for større kontrol med hvordan det fremstår */
 
 .img-solution-2 {
     /*background-image: url("pexels-abi-ponnappa-151189-15678267_plant_hand-removebg-preview.png");*/
     background-image: url("pexels-jakob-schlothane-holding-plant-below.png");
 
 
-    background-position: 75% 70%;   /* adjust focus area if needed */
-    background-size: 60%;
-    transform: scaleX(-1); /* zoom level – adjust freely */
+    background-position: 75% 70%;
+    /* image vendes */
+    transform: scaleX(-1);
 }
 
-.img-solution-1 {
-    background-image: url("pexels-rachel-claire-5865147_community_eating.jpg");
-    background-position: 50% 50%;   /* adjust focus area if needed */
-    background-size: 100%;          /* zoom level – adjust freely */
-}
-
-
-/* you can later replace .info-img with real <img>’s:
-   .info-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; } */
-
-/* RESPONSIVE --------------------------------------------------- */
+/* For at gøre responsive. Der er rester her fra tidligere eksperimenter */
 @media (max-width: 980px) {
     .info-inner {
-        grid-template-columns: 1fr;    /* stack text and images */
+        grid-template-columns: 1fr; /* stack text and images */
     }
+
     .info-images {
         flex-direction: row;
     }
+
     .info-img {
         min-height: 140px;
     }
@@ -552,29 +555,32 @@ html {
     .info-section {
         padding: calc(var(--header-h) + 1.2rem) 1.2rem 2rem;
     }
+
     .info-images {
         flex-direction: column;
     }
 }
 
-/* push the real content below the hero */
+/* Justering for at sektion 1 ikke bleeder ind i front page */
+
 main {
-    margin-top: 100vh;   /* start real content AFTER hero */
+    margin-top: 100vh;
     background: #fff;
 }
-
-
 
 
 .info-section {
     position: relative;
     z-index: 20;
     background: #ffffff;
-    scroll-margin-top: var(--header-h);  /* for anchor jumps */
+    scroll-margin-top: var(--header-h);
     padding: calc(var(--header-h) + 2rem) 5vw 3rem;
 }
 
-/* globale variabler/værdier */
+/* globale variabler/værdier sat i bunden
+   fordi der lader til at være steder i midten hvor værdierne ændres
+   skal lige findes */
+
 :root {
     --panel: rgba(255, 255, 255, .08);
     --panel-strong: rgba(255, 255, 255, .12);
@@ -583,8 +589,7 @@ main {
     --accent: #016946;
     /*--hover-accent: #785947;*/
     /*--accent-variant: #4d6e63;*/
-    --accent-variant: #25fdb7
-;
+    --accent-variant: #25fdb7;
 
 
     --hover-accent: #00426e;
@@ -601,4 +606,7 @@ main {
     --flyout-w: min(1100px, 92vw);
     --hover-bridge: 18px;
     --header-h: 42px;
+
 }
+
+
