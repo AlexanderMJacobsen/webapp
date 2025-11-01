@@ -39,14 +39,14 @@ body::before {
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url('pexels-mikhail-nilov-8543136_hands_holding_plant.jpg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920');
     /*background-position: center center;*/
-    background-position: center 3%;
+    background-position: center 2%;
     background-repeat: no-repeat;
     background-size: cover;
     transform: scale(1.05);
     z-index: -1;
     filter: blur(0);
     animation: blurAndDarken 1s ease forwards;
-    animation-delay: 1.5s;
+    animation-delay: 2s;
 }
 
 /* fra og til værdier for blur animation refereret i body::before
@@ -482,16 +482,15 @@ html {
     border-radius: 16px;
     flex: 1 1 0;
     min-height: 150px;
-    background-size: cover; /* fills entire box */
-    background-position: center; /* center the subject */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-color: #ffffff; /* optional fallback color */
+    background-color: #ffffff;
 
     /*background-color: var(--accent-variant); */
 }
 
 /* image 2 på sektion 1 angives her i CSS for større kontrol med hvordan det fremstår */
-
 .img-problem-1 {
     background-image: url("pexels-babydov-7788190_rotten_fruit-removebg-preview.png");
     background-position: center;
@@ -531,7 +530,8 @@ html {
     background-image: url("pexels-jakob-schlothane-holding-plant-below.png");
 
 
-    background-position: 75% 70%;
+    background-position: 75% 30%;
+    background-size: 55%;
     /* image vendes */
     transform: scaleX(-1);
 }
