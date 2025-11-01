@@ -1,25 +1,4 @@
-/* globale variabler/værdier */
-:root {
-    --panel: rgba(255, 255, 255, .08);
-    --panel-strong: rgba(255, 255, 255, .12);
-    --text: #ffffff;
-    --muted: #cce3d7;
-    --accent: #016946;
-    /*--hover-accent: #785947;*/
-    --hover-accent: #00426e;
 
-    /*--hover-text: #014f34;*/
-    --hover-text: #ffffff;
-
-    --ring: transparent;
-    --border: rgba(255, 255, 255, .15);
-    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-    --radius: 14px;
-    --radius-lg: 18px;
-    --gap: clamp(.75rem, 1.2vw, 1rem);
-    --flyout-w: min(1100px, 92vw);
-    --hover-bridge: 18px;
-}
 
 
 
@@ -83,7 +62,7 @@ body::before {
         url('pexels-mikhail-nilov-8543136_hands_holding_plant.jpg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920');
     }
     to {
-        filter: blur(8px);
+        filter: blur(5px);
         background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
         url('pexels-mikhail-nilov-8543136_hands_holding_plant.jpg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920');
     }
@@ -186,8 +165,13 @@ body::before {
     transform: translateX(-50%) translateY(12px);
     opacity: 0;
     pointer-events: none;
-    transition: opacity .18s ease, transform .22s ease;
+    background: rgba(1, 105, 70, 0.25);     /* greenish, transparent */
+    backdrop-filter: blur(5px);
+
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
     top: calc(100% + 2px);
+    border-radius: 6px;
     width: 150px;
     /*max-width: 90vw;*/
     max-width: min(92vw, 680px);
@@ -210,16 +194,69 @@ body::before {
 }
 
 
+.nav-item:hover .flyout,
+.nav-item:focus-within .flyout {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+}
+
+/* slight delay before hiding */
+.nav-item:not(:hover) .flyout {
+    transition-delay: 0.15s;
+}
+
+/* invisible gap for easier hover */
+.flyout::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+
+/* make nav-item a positioning context */
+.nav-item--bridge {
+    position: relative;
+}
+
+/* 1) invisible bridge under the BUTTON itself */
+.nav-item--bridge .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -14px;   /* how far below the button the bridge goes */
+    height: 14px;    /* thickness of the bridge */
+    background: transparent;
+    pointer-events: auto;
+}
+
+/* 2) also keep the buffer on the flyout so the two areas meet */
+.nav-item--bridge .flyout::before {
+    content: "";
+    position: absolute;
+    top: -14px;      /* must match the button bridge bottom */
+    left: 0;
+    right: 0;
+    height: 14px;
+    background: transparent;
+}
+
+
+
 /* ramme og baggrund for fly-out */
 .panel {
     position: relative;
-    background: var(--accent);
-    border: 1px solid var(--border);
+    background: rgba(1, 105, 70, 0.35);  /* same green, but transparent */
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
-    overflow: hidden;
-    backdrop-filter: blur(10px) saturate(140%);
+    backdrop-filter: blur(5px);          /* extra blur inside */
 }
+
 
 /* padding til tekst i fly-out */
 .flyout-content {
@@ -368,8 +405,8 @@ html {
 
 /* height of your sticky header so we can offset scroll */
 :root {
-    --header-h: 70px;
-    --info-card-bg: #ffffff;      /* you said: adjustable */
+    --header-h: 42px;
+    --info-card-bg: var(--accent-variant);      /* you said: adjustable */
     --info-button-bg: #016946;    /* green button, adjustable */
     --info-text: #0b3a2b;         /* dark readable text */
 }
@@ -397,8 +434,10 @@ html {
 
 /* the card on the left */
 .info-text-box {
-    background: var(--info-card-bg);
-    border-radius: 18px;
+    /*background: var(--info-card-bg);*/
+    background: #ffffff;
+
+    border-radius: 10px;
     box-shadow: 0 8px 28px rgba(0,0,0,.08);
     padding: 2rem 2.4rem 2.8rem;
     color: var(--info-text);
@@ -441,16 +480,57 @@ html {
     gap: 1.2rem;
 }
 
+/* Base look shared by both image boxes */
 .info-img {
-    background: #e6eee9;        /* placeholder so you can see it */
     border-radius: 16px;
     flex: 1 1 0;
     min-height: 150px;
-    display: grid;
-    place-items: center;
-    color: #014f34;
-    font-weight: 600;
+    background-size: cover;       /* fills entire box */
+    background-position: center;  /* center the subject */
+    background-repeat: no-repeat;
+    background-color: #ffffff;    /* optional fallback color */
+
+    /*background-color: var(--accent-variant);    !* optional fallback color *!*/
 }
+
+/* Unique image for each box */
+.img-problem-1 {
+    background-image: url("pexels-babydov-7788190_rotten_fruit-removebg-preview.png");
+    background-position: center;
+    background-size: contain;       /* show the full logo without cropping */
+}
+
+.img-problem-2 {
+    background-image: url("marek-studzinski-aoU2CWG_Vhc-unsplash_rotten.jpg");
+    transform: scaleY(-1);   /* flips horizontally */
+    background-position: 50% 50%;   /* adjust focus area if needed */
+    background-size: 100%;          /* zoom level – adjust freely */
+}
+
+.info-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* fills box without distortion */
+    display: block;
+}
+
+
+.img-solution-2 {
+    /*background-image: url("pexels-abi-ponnappa-151189-15678267_plant_hand-removebg-preview.png");*/
+    background-image: url("pexels-jakob-schlothane-holding-plant-below.png");
+
+
+    background-position: 75% 70%;   /* adjust focus area if needed */
+    background-size: 60%;
+    transform: scaleX(-1); /* zoom level – adjust freely */
+}
+
+.img-solution-1 {
+    background-image: url("pexels-rachel-claire-5865147_community_eating.jpg");
+    background-position: 50% 50%;   /* adjust focus area if needed */
+    background-size: 100%;          /* zoom level – adjust freely */
+}
+
 
 /* you can later replace .info-img with real <img>’s:
    .info-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; } */
@@ -479,8 +559,46 @@ html {
 
 /* push the real content below the hero */
 main {
-    margin-top: calc(100vh - var(--header-h) + 8px);
+    margin-top: 100vh;   /* start real content AFTER hero */
     background: #fff;
 }
 
 
+
+
+.info-section {
+    position: relative;
+    z-index: 20;
+    background: #ffffff;
+    scroll-margin-top: var(--header-h);  /* for anchor jumps */
+    padding: calc(var(--header-h) + 2rem) 5vw 3rem;
+}
+
+/* globale variabler/værdier */
+:root {
+    --panel: rgba(255, 255, 255, .08);
+    --panel-strong: rgba(255, 255, 255, .12);
+    --text: #ffffff;
+    --muted: #cce3d7;
+    --accent: #016946;
+    /*--hover-accent: #785947;*/
+    /*--accent-variant: #4d6e63;*/
+    --accent-variant: #25fdb7
+;
+
+
+    --hover-accent: #00426e;
+
+    /*--hover-text: #014f34;*/
+    --hover-text: #ffffff;
+
+    --ring: transparent;
+    --border: rgba(255, 255, 255, .15);
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    --radius: 14px;
+    --radius-lg: 18px;
+    --gap: clamp(.75rem, 1.2vw, 1rem);
+    --flyout-w: min(1100px, 92vw);
+    --hover-bridge: 18px;
+    --header-h: 42px;
+}
