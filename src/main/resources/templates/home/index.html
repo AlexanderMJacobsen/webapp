@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="da">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Index page til præsentation af organisation</title>
 
     <!-- Link til Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+          rel="stylesheet">
 
     <!-- Link til CSS fil i static directory -->
     <link rel="stylesheet" href="homestyle.css">
@@ -19,12 +20,18 @@
 <header class="site-header">
     <nav class="nav" aria-label="Primary">
 
+        <!-- Logo helt til venstre i top menu, der fungerer som link -->
+        <a href="/" class="nav-logo">
+            <img src="logo placeholder background removed.png" alt="Logo">
+        </a>
+
         <!-- unordered list / bullet list (som bliver horisontal) starter -->
         <ul class="nav-list" role="menubar" aria-label="Main">
 
             <!-- Fly-out: Hvad er problemet -->
             <li class="nav-item" role="none">
-                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#">Hvad er problemet ▾</a>
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="/">Hvad er
+                    problemet ▾</a>
                 <div class="flyout flyout--text" role="dialog" aria-label="Hvad er problemet">
                     <div class="panel">
 
@@ -46,7 +53,8 @@
 
             <!-- Fly-out: Hvad gør Danmark mod madspild ved det -->
             <li class="nav-item" role="none">
-                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#">Hvad gør Danmark mod madspild ved det ▾</a>
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="/">Hvad gør Danmark
+                    mod madspild ved det ▾</a>
                 <div class="flyout flyout--text" role="dialog" aria-label="Hvad gør Danmark mod madspild ved det">
                     <div class="panel">
 
@@ -71,7 +79,8 @@
             og derfor skal også hover tekst være anderledes for at den bliver synlig
             det er ordnet med inline style -->
             <li class="nav-item" role="none">
-                <a class="nav-link" style="background-color: #014f34; --hover-text:#e9eef8; --hover-accent:#026243;" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#">Registrer ▾</a>
+                <a class="nav-link" style="background-color: var(--hover-accent)"
+                   role="menuitem" aria-haspopup="true" aria-expanded="false" href="/">Registrer ▾</a>
 
                 <div class="flyout" role="dialog" aria-label="Registrer">
                     <div class="panel">
@@ -87,7 +96,7 @@
 
             <!-- Drop-down: Log ind -->
             <li class="nav-item" role="none">
-                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#">Log ind ▾</a>
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="/">Log ind ▾</a>
                 <div class="flyout" role="dialog" aria-label="Log ind">
                     <div class="panel">
 
