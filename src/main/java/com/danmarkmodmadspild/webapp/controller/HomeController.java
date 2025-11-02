@@ -16,8 +16,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("Problem", homeService.getProblemText());
-        model.addAttribute("Solution", homeService.getSolutionText());
+        model.addAttribute("SectionText", homeService.getHomeSectionText());
         return "home/index";
     }
 }
