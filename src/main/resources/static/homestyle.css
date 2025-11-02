@@ -1,3 +1,4 @@
+
 :root {
     --panel: rgba(255, 255, 255, .08);
     --panel-strong: rgba(255, 255, 255, .12);
@@ -7,7 +8,6 @@
     /*--hover-accent: #785947;*/
     /*--accent-variant: #4d6e63;*/
     --accent-variant: #25fdb7;
-
 
     --hover-accent: #00426e;
 
@@ -52,7 +52,7 @@ body {
 }
 
 
-/* outline til keyboard navigation */
+/* outline til keyboard navigation af top menu */
 a:focus {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -70,6 +70,8 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+
 
 
 /* blur baggrunds image men uden at blur text som ligger oven på */
@@ -104,6 +106,8 @@ body::before {
         url('pexels-mikhail-nilov-8543136_hands_holding_plant.jpg?auto=compress&cs=tinysrgb&dpr=2&h=1080&w=1920');
     }
 }
+
+
 
 /* header til overliggende top menu navigation bar */
 .site-header {
@@ -267,8 +271,8 @@ body::before {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -14px; /* how far below the button the bridge goes */
-    height: 14px; /* thickness of the bridge */
+    bottom: -14px;
+    height: 14px;
     background: transparent;
     pointer-events: auto;
 }
@@ -512,11 +516,10 @@ main {
 .img-problem-1 {
     background-image: url("pexels-babydov-7788190_rotten_fruit-removebg-preview.png");
     background-position: center;
-    background-size: contain; /* show the full logo without cropping */
+    background-size: contain;
 }
 
 /* image 2 på sektion 1 angives her i CSS for større kontrol med hvordan det fremstår */
-
 .img-problem-2 {
     background-image: url("marek-studzinski-aoU2CWG_Vhc-unsplash_rotten.jpg");
     /* image vendes */
@@ -534,7 +537,6 @@ main {
 
 
 /* image 1 på sektion 2 angives her i CSS for større kontrol med hvordan det fremstår */
-
 .img-solution-1 {
     background-image: url("pexels-rachel-claire-5865147_community_eating.jpg");
     background-position: 50% 50%;
@@ -542,7 +544,6 @@ main {
 }
 
 /* image 2 på sektion 2 angives her i CSS for større kontrol med hvordan det fremstår */
-
 .img-solution-2 {
     /*!* hvis vælge hånd som plante gror fra *!*/
     /*background-image: url("pexels-jakob-schlothane-holding-plant-below.png");*/
@@ -563,7 +564,7 @@ main {
 /* For at gøre responsive. Der er rester her fra tidligere eksperimenter */
 @media (max-width: 980px) {
     .info-inner {
-        grid-template-columns: 1fr; /* stack text and images */
+        grid-template-columns: 1fr;
     }
 
     .info-images {
@@ -584,19 +585,4 @@ main {
         flex-direction: column;
     }
 }
-
-
-
-
-
-
-/* globale variabler/værdier sat i bunden
-   fordi der lader til at være steder i midten hvor værdierne ændres
-   skal lige findes */
-
-
-
-
-
-
 
