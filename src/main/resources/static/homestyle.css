@@ -1,3 +1,39 @@
+:root {
+    --panel: rgba(255, 255, 255, .08);
+    --panel-strong: rgba(255, 255, 255, .12);
+    --text: #ffffff;
+    --muted: #cce3d7;
+    --accent: #016946;
+    /*--hover-accent: #785947;*/
+    /*--accent-variant: #4d6e63;*/
+    --accent-variant: #25fdb7;
+
+
+    --hover-accent: #00426e;
+
+    /*--hover-text: #014f34;*/
+    --hover-text: #ffffff;
+
+    --ring: transparent;
+    --border: rgba(255, 255, 255, .15);
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    --radius: 14px;
+    --radius-lg: 18px;
+    --gap: clamp(.75rem, 1.2vw, 1rem);
+    --flyout-w: min(1100px, 92vw);
+    --hover-bridge: 18px;
+
+    /* Her angives højden af top menu som målt i Developer Tools
+   For at få præcis overgang fra front til sektion 1 til sektion 2 */
+    --header-h: 42px;
+
+    --info-card-bg: var(--accent-variant);
+    --info-button-bg: #016946;
+    --info-text: #0b3a2b;
+
+}
+
+
 /* inkluder padding og border i calculation af elements højde og bredde */
 * {
     box-sizing: border-box;
@@ -6,10 +42,15 @@
 }
 
 /* Når indhold i et element overskrider grænserne så vis ikke det overskredne */
-html, body {
+/* Smooth scroll effect når bruge links til hoppe til sektion 1 og sektion 2 */
+
+html,
+body {
     height: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
+
 
 /* outline til keyboard navigation */
 a:focus {
@@ -22,7 +63,7 @@ body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial;
     font-size: 16px;
     line-height: 1.5;
-    color: #fff;
+    color: #ffffff;
     min-height: 100vh;
     position: relative;
     /*overflow: hidden;*/
@@ -120,6 +161,9 @@ body::before {
     transition: background .2s ease, border .2s ease, color .2s ease
 }
 
+
+
+
 /* værdier for når mus pege på link i navigation bar
    eller på felt hvor link er i
    eller på selve udfoldede fly-out til et link
@@ -176,10 +220,7 @@ body::before {
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* til teksten i fly-out */
-.flyout.flyout--text {
-    width: min(680px, 92vw);
-}
+
 
 /* fold fly-out ud når mus pege på link
    og hold det folder ud når bagefter flytte mus fra link til fly-out
@@ -244,33 +285,6 @@ body::before {
 }
 
 
-/* ramme og baggrund for fly-out, som lige nu  ikke bruges mere  */
-.panel {
-    position: relative;
-    background: rgba(1, 105, 70, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow);
-    backdrop-filter: blur(5px);
-}
-
-
-/* padding til tekst i fly-out */
-.flyout-content {
-    font-size: 16px;
-    font-family: "Plus Jakarta Sans", Arial, serif;
-    padding: 30px 30px;
-    text-align: justify;
-    line-height: 0.9;
-    color: var(--text);
-
-}
-
-/* for <p tekst i fly-out */
-.flyout-content p {
-    margin: 1rem 0 0.6rem 0;
-    line-height: 0.9;
-}
 
 
 /* Til drop-down Log ind i navigation bar */
@@ -384,8 +398,8 @@ body::before {
     }
 }
 
-/* Hvis screen er smallere end 1075, så bliver fly-outs ikke vist
-   Dette er en rest fra rode med at lave Responsive Design med fly-outs */
+/* Hvis screen er smallere end 192, så bliver fly-out dropdowns ikke vist
+   Indtil da er skærmen lige stor nok til at man kan forstå punkterne på dropdown */
 @media (max-width: 192px) {
 
     .flyout {
@@ -393,30 +407,32 @@ body::before {
     }
 }
 
-/* Smooth scroll effect når bruge links til hoppe til sektion 1 og sektion 2 */
-html, body {
-    scroll-behavior: smooth;
+
+
+/* Justering for at sektion 1 ikke bleeder ind i front page */
+
+main {
+    margin-top: 100vh;
+    background: #fff;
 }
 
-/* Her angives højden af top menu som målt i Developer Tools
-   For at få præcis overgang fra front til sektion 1 til sektion 2 */
-:root {
-    --header-h: 42px;
-    --info-card-bg: var(--accent-variant);
-    --info-button-bg: #016946;
-    --info-text: #0b3a2b;
-}
+
+
 
 /* generelt layout af sektion 1 og 2 osv */
 .info-section {
+    position: relative;
+    z-index: 20;
     min-height: 100vh;
     background: #ffffff;
     display: flex;
     align-items: center;
     padding: calc(var(--header-h) + 2rem) 5vw 3rem;
-    /* make sure sticky header doesn’t cover the top when scrolled to */
+    /* beregning der tager hensyn til header i forhold til scroll */
     scroll-margin-top: calc(var(--header-h) + 10px);
 }
+
+
 
 /* assymmetrisk horisontal deling af skærm i sektion 1 og sektion 2 */
 .info-inner {
@@ -569,21 +585,10 @@ html, body {
     }
 }
 
-/* Justering for at sektion 1 ikke bleeder ind i front page */
-
-main {
-    margin-top: 100vh;
-    background: #fff;
-}
 
 
-.info-section {
-    position: relative;
-    z-index: 20;
-    background: #ffffff;
-    scroll-margin-top: var(--header-h);
-    padding: calc(var(--header-h) + 2rem) 5vw 3rem;
-}
+
+
 
 /* globale variabler/værdier sat i bunden
    fordi der lader til at være steder i midten hvor værdierne ændres
@@ -592,33 +597,6 @@ main {
 
 
 
-:root {
-    --panel: rgba(255, 255, 255, .08);
-    --panel-strong: rgba(255, 255, 255, .12);
-    --text: #ffffff;
-    --muted: #cce3d7;
-    --accent: #016946;
-    /*--hover-accent: #785947;*/
-    /*--accent-variant: #4d6e63;*/
-    --accent-variant: #25fdb7;
 
-
-    --hover-accent: #00426e;
-
-    /*--hover-text: #014f34;*/
-    --hover-text: #ffffff;
-
-    --ring: transparent;
-    --border: rgba(255, 255, 255, .15);
-    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-    --radius: 14px;
-    --radius-lg: 18px;
-    --gap: clamp(.75rem, 1.2vw, 1rem);
-    --flyout-w: min(1100px, 92vw);
-    --hover-bridge: 18px;
-    --header-h: 42px;
-
-
-}
 
 
