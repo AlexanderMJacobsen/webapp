@@ -37,11 +37,11 @@
 
 
 /* inkluder padding og border i calculation af elements højde og bredde */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0
-}
+/** {*/
+/*    box-sizing: border-box;*/
+/*    margin: 0;*/
+/*    padding: 0*/
+/*}*/
 
 /* Når indhold i et element overskrider grænserne så vis ikke det overskredne */
 /* Smooth scroll effect når bruge links til hoppe til sektion 1 og sektion 2 */
