@@ -50,7 +50,8 @@ header h1 {
     color: #fff;
     overflow: hidden;
     min-height: 220px;
-    border: 2px solid rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 9%;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
     margin: 1rem 0;
     padding: 0;
@@ -125,14 +126,17 @@ header h1 {
 /* Hvert statistik-kort */
 .stat-card {
     display: flex;
+    flex-direction: row; /* ← Gør layoutet vandret */
     align-items: center;
-    gap: 1rem;
+    justify-content: flex-start;
+    gap: 1rem; /* Lidt luft mellem ikon og tekst */
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(0, 0, 0, 0.7);
     border-radius: 9px;
     padding: 1rem 1.2rem;
     transition: all 0.3s ease-in-out;
     min-height: 120px;
+
 }
 
 .stat-card:hover {
@@ -146,19 +150,23 @@ header h1 {
     height: 64px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* ← Flyt ikon mod venstre */
+
 }
 
 .stat-icon img {
     width: 64px;
     height: 64px;
     object-fit: contain;
+    margin-left: 0;
+
 }
 
 /* Tekst i statistik-kort */
 .stat-text {
     flex: 1;
-    text-align: left;
+    text-align: center;
+
 }
 
 .stat-text b {
