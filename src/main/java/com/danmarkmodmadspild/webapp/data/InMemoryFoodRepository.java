@@ -28,7 +28,7 @@ public class InMemoryFoodRepository {
         save(new FoodItem(null, "Grøn salatboks", "vegansk", 6, 2.5, 0.0,
                 LocalDateTime.now().plusHours(2), "Indeholder nødder"));
 
-        save(new FoodItem(null, "Vegetarisk lasagne stykker", "vegetarisk", 4, 1.8, 15.0,
+        save(new FoodItem(null, "Surdejs brød", "vegetarisk", 4, 1.2, 45.0,
                 LocalDateTime.now().plusHours(5), "Med ost (gluten)"));
 
         save(new FoodItem(null, "Blandede brød (daggammelt)", "andet", 10, 3.0, 0.0,
