@@ -4,11 +4,8 @@ import com.danmarkmodmadspild.webapp.data.InMemoryFoodRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.danmarkmodmadspild.webapp.service.HomeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.ui.Model;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,7 +23,7 @@ public class FoodController {
  * Show main page with food list and search filters.
  * Runs when user visits "/"
  */
-@GetMapping("/FoodService")
+@GetMapping("/BusinessFoodManage")
 public String home(
         @RequestParam(name = "category", required = false) List<String> categories,
         @RequestParam(name = "q",        required = false) String q,
@@ -57,14 +54,14 @@ public String home(
     model.addAttribute("form", new FoodItem()); // empty form for new item
 
     // return page name
-    return "BusinessFoodManage";
+    return "home/BusinessFoodManage";
 }
 
 /**
  * Load one item into form so user can edit it.
  * Same page is used, but input boxes get filled.
  */
-@GetMapping("/edit/{id}")
+@GetMapping("BusinessFoodManage/edit/{id}")
 public String edit(
         @PathVariable String id,
         @RequestParam(name = "category", required = false) List<String> categories,
@@ -73,7 +70,7 @@ public String edit(
 ) {
     // try find item, else go back
     var item = repo.findById(id).orElse(null);
-    if (item == null) return "redirect:/";
+    if (item == null) return "redirect:home/BusinessFoodManage";
 
     // keep current filter state
     List<String> activeCategories = (categories == null || categories.isEmpty())
@@ -88,26 +85,26 @@ public String edit(
     model.addAttribute("form", item); // fill form with food data
 
     // open same view
-    return "BusinessFoodManage";
+    return "home/BusinessFoodManage";
 }
 
 /**
  * Save item from form (create or update).
  * Called when user presses "Gem"
  */
-@PostMapping("/save")
+@PostMapping("BusinessFoodManage/save")
 public String save(@ModelAttribute("form") FoodItem form) {
     repo.save(form);
-    return "redirect:/"; // go back to list
+    return "redirect:home/BusinessFoodManage"; // go back to list
 }
 
 /**
  * Delete item by id.
  * Called when user presses "Slet"
  */
-@PostMapping("/delete/{id}")
+@PostMapping("BusinessFoodManage/delete/{id}")
 public String delete(@PathVariable String id){
         repo.deleteById(id);
-        return "redirect:/";
+        return "redirect:home/BusinessFoodManage";
     }
 }

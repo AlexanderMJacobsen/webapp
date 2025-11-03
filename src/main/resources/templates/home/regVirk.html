@@ -271,19 +271,19 @@
         x[currentTab].style.display = "none";
         currentTab += n;
         if (currentTab >= x.length) {
-            document.getElementById("regForm").submit();
+            window.location.href = "/BusinessFoodManage";
             return false;
         }
         showTab(currentTab);
     }
 
     function validateForm() {
-        var x, y, i, valid = true;
+        let x, y, i, valid = true;
         x = document.getElementsByClassName("tab");
         y = x[currentTab].getElementsByTagName("input");
 
         for (i = 0; i < y.length; i++) {
-            if (y[i].value == "") {
+            if (y[i].value === "") {
                 y[i].className += " invalid";
                 valid = false;
             }
