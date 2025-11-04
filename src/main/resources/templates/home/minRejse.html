@@ -6,17 +6,69 @@
     <title>Min Rejse</title>
     <link rel="icon" type="image/x-icon" href="/img/org-logo.png">
 
+    <link rel="stylesheet" href="/css/topmenu.css" />
 
     <link rel="stylesheet" href="/css/minRejse.css" />
 </head>
 
 <body>
 
+<header class="site-header">
+    <nav class="nav" aria-label="Primary">
 
- <header>
+        <!-- Logo helt til venstre i top menu, der fungerer som link -->
+        <a href="/" class="nav-logo">
+            <img src="/img/org-logo.png" alt="Logo">
+        </a>
+
+        <!-- unordered list / bullet list (som bliver horisontal) starter -->
+        <ul class="nav-list" role="menubar" aria-label="Main">
+
+            <!-- Link: Hvad er problemet -->
+            <li class="nav-item" role="none">
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="#sektion1"></a>
+            </li>
+
+            <!-- Link: Hvad gør Danmark mod madspild ved det -->
+            <li class="nav-item nav-item--bridge" role="none">
+                <a class="nav-link" role="menuitem" aria-expanded="false" href="#sektion2"></a>
+            </li>
+
+            <!-- Drop-down: Registrer. Her er background anderledes for at fremhæve
+            og derfor skal også hover tekst være anderledes for at den bliver synlig
+            det er ordnet med inline style -->
+            <li class="nav-item nav-item--bridge" role="none">
+                <a class="nav-link" style="background-color: var(--hover-accent)"
+                   role="menuitem" aria-expanded="false" href="/"></a>
+
+
+            </li>
+
+            <!-- Drop-down: Log ind -->
+            <li class="nav-item" role="none">
+                <a class="nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" href="/">Log ud</a>
+                <div class="flyout" role="dialog" aria-label="Log ind">
+
+
+                    <!-- unordered list / bullet list i drop down -->
+                    <ul class="list" role="list">
+                        <li><a href="/">Privat</a></li>
+                        <li><a href="/">Virksomhed</a></li>
+                        <li><a href="/">Admin</a></li>
+                    </ul>
+
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+</header>
+
+
+<!-- <header>
    <h1>Min Rejse</h1>
    <p>Artikler & din indsats mod madspild</p>
-</header>
+</header> -->
 
 <main class="split">
     <section class="articles" aria-labelledby="artikler-overskrift">
@@ -117,7 +169,7 @@
 </main>
 
 <footer>
-    Som Basic user kan du læse artikler og følge din egen indsats mod madspild.
+    Danmark Mod Madspild
 </footer>
 </body>
 </html>
