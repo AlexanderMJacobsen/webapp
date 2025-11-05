@@ -127,7 +127,13 @@
             <label for="mail">Email:</label>
             <input placeholder="Skriv Email..." type="text" id="mail"
                    pattern="[A-ZÆØÅa-zæøå0-9._%+\-]+@[A-ZÆØÅa-zæøå0-9.\-]+\.[A-Za-z]{2,}"
-                   title="please include a proper email of the following format mail@provider.xx"
+                   title="please include a proper email of the following format: mail@provider.xx"
+                   required>
+
+            <label for="tlf">Telefonnummer:</label>
+            <input placeholder="Skriv Telefonummer..." type="text" id="tlf"
+                   pattern="[0-9]{8,8}"
+                   title="please enter a valid phone number of the following format: 12345678"
                    required>
 
             <label for="pwd">Adgangskode:</label>
