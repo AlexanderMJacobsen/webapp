@@ -56,7 +56,7 @@ public class AdminArticlesController {
         model.addAttribute("showDrafts", showDrafts);
         model.addAttribute("form", new Article());
 
-        return "AdminArticlesManage";
+        return "home/AdminArticlesManage";
     }
 
     @GetMapping("/edit/{id}")
@@ -83,7 +83,7 @@ public class AdminArticlesController {
         model.addAttribute("quote", quotes.get(random.nextInt(quotes.size())));
 
 
-        return "AdminArticlesManage";
+        return "home/AdminArticlesManage";
     }
 
     @PostMapping("/save")
